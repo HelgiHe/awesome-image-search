@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "rootDir": "src",
+    "baseUrl": ".",
+    "module": "esnext",
+    "target": "esnext",
+    "moduleResolution": "node",
+    "alwaysStrict": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+  },
+  "exclude": ["node_modules", "dist"]
+}
