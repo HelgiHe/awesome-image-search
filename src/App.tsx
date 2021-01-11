@@ -10,6 +10,7 @@ import { fakeData } from "./lib/data";
 import { Header } from "./components/Header";
 import { GlobalStyle } from "./components/GlobalStyle";
 import { fetchData } from "./lib/api";
+import { Loader } from "./components/Loader";
 
 const App = () => {
   const [searcTerm, setSearchTerm] = React.useState("");
@@ -20,20 +21,10 @@ const App = () => {
   const [ref, inView] = useInView({ rootMargin: "0px 0px 400px 0px" });
 
   React.useEffect(() => {
-    (async function fetchresults() {
-      setLoading(true);
-      const data = await fetchData(startIndex);
-      setResults(data.items);
-      setStartIndex(data.queries.nextPage[0].startIndex);
-      setLoading(false);
-    })();
-  }, []);
-
-  React.useEffect(() => {
-    if (inView && results) {
+    if (inView && results.length) {
       (async function fetchNextResults() {
         setLoading(true);
-        const data = await fetchData(startIndex);
+        const data = await fetchData(startIndex, searcTerm);
         setStartIndex(data.queries.nextPage[0].startIndex);
         const newResults = [...results, ...data.items];
         setResults(newResults);
@@ -41,7 +32,7 @@ const App = () => {
       })();
     }
   }, [inView]);
-  console.log(results);
+
   const changeTheme = () => {
     if (theme === "light") {
       setTheme("dark");
@@ -49,6 +40,16 @@ const App = () => {
       setTheme("light");
     }
   };
+
+  const onSearch = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+    const data = await fetchData(startIndex, searcTerm);
+    setResults(data.items);
+    setStartIndex(data.queries.nextPage[0].startIndex);
+    setLoading(false);
+  };
+
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <GlobalStyle />
@@ -60,13 +61,13 @@ const App = () => {
       <main>
         <SearchForm
           onSubmit={(event) => {
-            event.preventDefault();
-            console.log("do stuff");
+            onSearch(event);
           }}
           searcTerm={searcTerm}
           setSearchTerm={setSearchTerm}
         />
         <Results searchResults={results} />
+        {loading ? <Loader /> : null}
       </main>
       <footer ref={ref}>fótur</footer>
     </ThemeProvider>

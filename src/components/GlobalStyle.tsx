@@ -16,6 +16,9 @@ const GlobalStyle = () => {
           background: ${theme.color.background};
           padding: ${theme.spacing.single};
         }
+        main {
+          min-height: 90vh;
+        }
         h1,
         h2,
         label {

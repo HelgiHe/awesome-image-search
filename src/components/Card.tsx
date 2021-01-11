@@ -3,15 +3,21 @@ import styled from "@emotion/styled";
 import { ExternalLink } from "react-feather";
 import { Link } from "./Link";
 
-type CardProps = { imageUrl: string; link: string; title: string };
+type CardProps = {
+  imageUrl: string;
+  externalLink: string;
+  title: string;
+};
 
-const Card = ({ imageUrl, link, title }: CardProps) => {
+const Card = ({ imageUrl, externalLink, title }: CardProps) => {
   return (
     <CardContainer>
       <Title>{title}</Title>
-      <StyledImage src={imageUrl} />
+      <Link url={imageUrl}>
+        <StyledImage src={imageUrl} />
+      </Link>
       <LinkContainer>
-        <Link url={link}>
+        <Link url={externalLink}>
           <ExternalLink />
         </Link>
       </LinkContainer>
@@ -41,6 +47,8 @@ const Title = styled.h2`
 
 const StyledImage = styled.img`
   width: 100%;
+  height: 200px;
+  object-fit: cover;
 `;
 
 const LinkContainer = styled.div`

@@ -9,7 +9,7 @@ const Results = ({ searchResults }) => {
         <Card
           key={item.link}
           imageUrl={item.link}
-          link={item.image.contextLink}
+          externalLink={item.image.contextLink}
           title={item.title}
         />
       ))}
