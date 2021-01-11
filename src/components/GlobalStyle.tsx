@@ -21,6 +21,11 @@ const GlobalStyle = () => {
         }
         h1,
         h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
         label {
           margin: 0px;
           color: ${theme.color.text};

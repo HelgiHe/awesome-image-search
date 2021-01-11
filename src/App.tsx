@@ -32,7 +32,7 @@ const App = () => {
       })();
     }
   }, [inView]);
-
+  console.log(inView);
   const changeTheme = () => {
     if (theme === "light") {
       setTheme("dark");
@@ -43,11 +43,15 @@ const App = () => {
 
   const onSearch = async (event) => {
     event.preventDefault();
-    setLoading(true);
-    const data = await fetchData(startIndex, searcTerm);
-    setResults(data.items);
-    setStartIndex(data.queries.nextPage[0].startIndex);
-    setLoading(false);
+    if (searcTerm.length >= 3) {
+      setLoading(true);
+      const data = await fetchData(startIndex, searcTerm);
+      if (data.searchInformation.totalResults > 0) {
+        setResults(data.items);
+        setStartIndex(data.queries.nextPage[0].startIndex);
+      }
+      setLoading(false);
+    }
   };
 
   return (
@@ -55,7 +59,7 @@ const App = () => {
       <GlobalStyle />
       <Header
         title="Awesome Image Search"
-        theme={theme}
+        selectedTheme={theme}
         handleToggle={() => changeTheme()}
       />
       <main>
@@ -69,7 +73,9 @@ const App = () => {
         <Results searchResults={results} />
         {loading ? <Loader /> : null}
       </main>
-      <footer ref={ref}>fótur</footer>
+      <footer>
+        <p>HH 2021</p>
+      </footer>
     </ThemeProvider>
   );
 };

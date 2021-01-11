@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { keyframes } from "@emotion/react";
 import { ExternalLink } from "react-feather";
 import { Link } from "./Link";
 
@@ -25,6 +26,14 @@ const Card = ({ imageUrl, externalLink, title }: CardProps) => {
   );
 };
 
+const reveal = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% { 
+    opacity: 1;
+  }`;
+
 const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -32,6 +41,7 @@ const CardContainer = styled.div`
   box-sizing: border-box;
   padding: ${({ theme }) => theme.spacing.single};
   width: 100%;
+  animation: ${reveal} 200ms ease-out;
   background-color: ${({ theme }) => theme.color.background};
   border: ${({ theme }) => `1px solid ${theme.color.border}`};
   border-radius: 4px;
@@ -42,7 +52,7 @@ const CardContainer = styled.div`
 
 const Title = styled.h2`
   font-size: 1.1em;
-  height: 2.4em;
+  height: 2.5em;
 `;
 
 const StyledImage = styled.img`

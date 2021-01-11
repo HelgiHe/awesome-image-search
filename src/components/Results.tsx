@@ -3,6 +3,9 @@ import React from "react";
 import { Card } from "./Card";
 
 const Results = ({ searchResults }) => {
+  if (!searchResults.length) {
+    return null;
+  }
   return (
     <ResultsContainer>
       {searchResults.map((item) => (
