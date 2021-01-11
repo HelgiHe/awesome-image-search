@@ -23,10 +23,12 @@
     "@emotion/babel-plugin": "^11.1.2",
     "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",
+    "axios": "^0.21.1",
     "lib": "^4.3.0",
     "react": "^17.0.1",
     "react-content-loader": "^5.1.4",
     "react-dom": "^17.0.1",
-    "react-feather": "^2.0.9"
+    "react-feather": "^2.0.9",
+    "react-intersection-observer": "^8.31.0"
   }
 }

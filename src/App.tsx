@@ -5,7 +5,7 @@ import { darkTheme } from "./themes/dark";
 import { lightTheme } from "./themes/light";
 import { SearchForm } from "./components/SearchForm";
 import { Results } from "./components/Results";
-import { fakeData } from "../lib/data";
+import { fakeData } from "./lib/data";
 
 const Button = styled.button`
   color: ${({ theme }) => theme.color.text};
@@ -17,7 +17,8 @@ const App = () => {
       <Global
         styles={css`
           h1,
-          h2 {
+          h2,
+          label {
             margin: 0px;
             font-family: -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu,
               Cantarell, Helvetica Neue;

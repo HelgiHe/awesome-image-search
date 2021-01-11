@@ -1,10 +1,9 @@
 import styled from "@emotion/styled";
-import { fakeData } from "../../lib/data";
 import React from "react";
 import { Card } from "./Card";
 
 const Results = ({ searchResults }) => {
-  console.log(fakeData);
+  console.log(searchResults);
   return (
     <ResultsContainer>
       {searchResults.items.map((item) => (
@@ -21,7 +20,7 @@ const Results = ({ searchResults }) => {
 
 const ResultsContainer = styled.div`
   display: grid;
-  grid-gap: ${({ theme }) => theme.spacing.single};
+  grid-gap: ${({ theme }) => theme.spacing.double};
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 `;
 

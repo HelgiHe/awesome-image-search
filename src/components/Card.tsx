@@ -10,9 +10,11 @@ const Card = ({ imageUrl, link, title }: CardProps) => {
     <CardContainer>
       <Title>{title}</Title>
       <StyledImage src={imageUrl} />
-      <Link url={link}>
-        <ExternalLink />
-      </Link>
+      <LinkContainer>
+        <Link url={link}>
+          <ExternalLink />
+        </Link>
+      </LinkContainer>
     </CardContainer>
   );
 };
@@ -22,7 +24,6 @@ const CardContainer = styled.div`
   flex-direction: column;
   min-height: 300px;
   box-sizing: border-box;
-  margin: ${({ theme }) => theme.spacing.single};
   padding: ${({ theme }) => theme.spacing.single};
   width: 100%;
   background-color: ${({ theme }) => theme.color.background};
@@ -40,6 +41,10 @@ const Title = styled.h2`
 
 const StyledImage = styled.img`
   width: 100%;
+`;
+
+const LinkContainer = styled.div`
+  align-self: flex-end;
 `;
 
 export { Card };
