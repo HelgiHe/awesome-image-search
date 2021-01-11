@@ -32,7 +32,6 @@ const App = () => {
       })();
     }
   }, [inView]);
-  console.log(inView);
   const changeTheme = () => {
     if (theme === "light") {
       setTheme("dark");
@@ -73,7 +72,7 @@ const App = () => {
         <Results searchResults={results} />
         {loading ? <Loader /> : null}
       </main>
-      <footer>
+      <footer ref={ref}>
         <p>HH 2021</p>
       </footer>
     </ThemeProvider>
