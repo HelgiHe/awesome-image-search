@@ -6,7 +6,6 @@ import { lightTheme } from "./themes/light";
 import { SearchForm } from "./components/SearchForm";
 import { Results } from "./components/Results";
 import { fakeData } from "../lib/data";
-import { Switch } from "./components/Switch";
 
 const Button = styled.button`
   color: ${({ theme }) => theme.color.text};
@@ -20,6 +19,8 @@ const App = () => {
           h1,
           h2 {
             margin: 0px;
+            font-family: -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu,
+              Cantarell, Helvetica Neue;
           }
         `}
       />

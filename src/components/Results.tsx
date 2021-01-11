@@ -1,9 +1,10 @@
 import styled from "@emotion/styled";
+import { fakeData } from "../../lib/data";
 import React from "react";
 import { Card } from "./Card";
 
 const Results = ({ searchResults }) => {
-  console.log(process.env.NODE_ENV);
+  console.log(fakeData);
   return (
     <ResultsContainer>
       {searchResults.items.map((item) => (
