@@ -1,21 +1,33 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { ExternalLink } from "react-feather";
+import { Link } from "./Link";
 
-const Card = ({ imageUrl }) => {
+type CardProps = { imageUrl: string; link: string; title: string };
+
+const Card = ({ imageUrl, link, title }: CardProps) => {
   return (
-    <Wrapper>
+    <CardContainer>
+      <Title>{title}</Title>
       <StyledImage src={imageUrl} />
-    </Wrapper>
+      <Link url={link}>
+        <ExternalLink />
+      </Link>
+    </CardContainer>
   );
 };
 
-const Wrapper = styled.div`
+const CardContainer = styled.div`
   display: flex;
+  flex-direction: column;
+`;
+
+const Title = styled.h2`
+  font-size: 1.1em;
 `;
 
 const StyledImage = styled.img`
-  width: 200px;
-  height: 180px;
+  width: 100%;
 `;
 
 export { Card };

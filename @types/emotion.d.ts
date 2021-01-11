@@ -8,5 +8,8 @@ declare module "@emotion/react" {
       primary: string;
       secondary: string;
     };
+    spacing: {
+      single: string;
+    };
   }
 }

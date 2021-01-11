@@ -7,6 +7,9 @@ const lightTheme: Theme = {
     primary: "#F1F3F4",
     secondary: "#3FC6DD",
   },
+  spacing: {
+    single: "12px",
+  },
 };
 
 export { lightTheme };

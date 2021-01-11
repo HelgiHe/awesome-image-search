@@ -8,14 +8,14 @@ const Switch = ({ isOn, handleToggle }: SwichProps) => {
   return (
     <React.Fragment>
       <CheckBox
-        id={`switch`}
+        id="switch"
         type="checkbox"
         checked={isOn}
         onChange={handleToggle}
       />
       <StyledLabel
         className="switch-label"
-        htmlFor={`switch`}
+        htmlFor="switch"
         isOn={isOn}
         activeBackground={theme.color.secondary}
         idleBackground={theme.color.primary}
