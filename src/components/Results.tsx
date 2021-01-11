@@ -3,10 +3,9 @@ import React from "react";
 import { Card } from "./Card";
 
 const Results = ({ searchResults }) => {
-  console.log(searchResults);
   return (
     <ResultsContainer>
-      {searchResults.items.map((item) => (
+      {searchResults.map((item) => (
         <Card
           key={item.link}
           imageUrl={item.link}
