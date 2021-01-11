@@ -30,7 +30,7 @@ const StyledSubmitButton = styled(Button)`
   position: relative;
   right: 40px;
   border-radius: 0 4px 4px 0;
-  height: 50px;
+  height: 33px;
   align-self: flex-end;
 `;
 
