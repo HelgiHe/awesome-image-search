@@ -17,8 +17,12 @@ const Button = ({ className, type, onClick, children }: ButtonProps) => {
 };
 
 const StyledButton = styled.button`
-  background-color: ${({ theme }) => theme.color.secondary};
+  background-color: ${({ theme }) => theme.color.primary};
+  transition: all 120ms ease-in;
   border: none;
+  &:hover {
+    background-color: ${({ theme }) => theme.color.secondary};
+  }
 `;
 
 export { Button };

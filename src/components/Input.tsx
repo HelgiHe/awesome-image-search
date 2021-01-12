@@ -36,7 +36,7 @@ const InputContainer = styled.span`
 
 const StyledInput = styled.input`
   background: none;
-  border: 1px solid #ddd;
+  border: ${({ theme }) => `1px solid ${theme.color.border}`};
   padding: 1em;
   font: inherit;
   font-size: inherit;

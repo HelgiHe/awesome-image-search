@@ -29,7 +29,7 @@ const Container = styled.div`
     position: absolute;
     width: 16px;
     height: 50px;
-    background: ${({ theme }) => theme.color.secondary};
+    background: ${({ theme }) => theme.color.accent};
   }
 `;
 

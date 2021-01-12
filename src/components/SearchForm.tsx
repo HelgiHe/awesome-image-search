@@ -1,10 +1,13 @@
 import styled from "@emotion/styled";
 import React from "react";
+import { Theme, useTheme } from "@emotion/react";
 import { Search } from "react-feather";
 import { Button } from "./Button";
 import { Input } from "./Input";
 
 const SearchForm = ({ onSubmit, searcTerm, setSearchTerm }) => {
+  const theme: Theme = useTheme();
+
   return (
     <StyledForm onSubmit={onSubmit}>
       <Input
@@ -15,7 +18,7 @@ const SearchForm = ({ onSubmit, searcTerm, setSearchTerm }) => {
         placeholder="Leitarorð..."
       />
       <StyledSubmitButton type="submit">
-        <Search />
+        <Search color={theme.color.text} />
       </StyledSubmitButton>
     </StyledForm>
   );

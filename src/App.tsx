@@ -1,7 +1,6 @@
 import React from "react";
 import { ThemeProvider } from "@emotion/react";
 import { useInView } from "react-intersection-observer";
-
 import { darkTheme } from "./themes/dark";
 import { lightTheme } from "./themes/light";
 import { SearchForm } from "./components/SearchForm";
@@ -18,7 +17,7 @@ const App = () => {
   const [startIndex, setStartIndex] = React.useState(1);
   const [loading, setLoading] = React.useState(false);
   const [results, setResults] = React.useState([]);
-  const [ref, inView] = useInView({ rootMargin: "0px 0px 400px 0px" });
+  const [ref, inView] = useInView({ rootMargin: "0px 0px 300px 0px" });
 
   React.useEffect(() => {
     if (inView && results.length) {

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { keyframes } from "@emotion/react";
+import { keyframes, Theme, useTheme } from "@emotion/react";
 import { ExternalLink } from "react-feather";
 import { Link } from "./Link";
 
@@ -11,6 +11,7 @@ type CardProps = {
 };
 
 const Card = ({ imageUrl, externalLink, title }: CardProps) => {
+  const theme: Theme = useTheme();
   return (
     <CardContainer>
       <Title>{title}</Title>
@@ -19,7 +20,7 @@ const Card = ({ imageUrl, externalLink, title }: CardProps) => {
       </Link>
       <LinkContainer>
         <Link url={externalLink}>
-          <ExternalLink />
+          <ExternalLink color={theme.color.accent} />
         </Link>
       </LinkContainer>
     </CardContainer>
@@ -42,7 +43,7 @@ const CardContainer = styled.div`
   padding: ${({ theme }) => theme.spacing.single};
   width: 100%;
   animation: ${reveal} 200ms ease-out;
-  background-color: ${({ theme }) => theme.color.background};
+  background-color: ${({ theme }) => theme.color.primary};
   border: ${({ theme }) => `1px solid ${theme.color.border}`};
   border-radius: 4px;
   box-shadow: 0 0.7px 0.9px rgba(0, 0, 0, 0.024),
