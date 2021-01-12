@@ -32,9 +32,9 @@ const StyledForm = styled.form`
 
 const StyledSubmitButton = styled(Button)`
   position: relative;
-  right: 40px;
+  right: 36px;
   border-radius: 0 4px 4px 0;
-  height: 33px;
+  height: 34px;
   align-self: flex-end;
 `;
 

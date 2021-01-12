@@ -35,6 +35,8 @@ const Input = ({
 const InputContainer = styled.span`
   display: flex;
   flex-direction: column;
+  max-width: 60%;
+  width: 400px;
 `;
 
 const StyledInput = styled.input`
@@ -45,7 +47,7 @@ const StyledInput = styled.input`
   font-size: inherit;
   border-radius: 4px;
   height: 1em;
-  width: 500px;
+  width: 100%;
 `;
 
 export { Input };
