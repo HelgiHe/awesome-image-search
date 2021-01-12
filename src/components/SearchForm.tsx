@@ -5,7 +5,19 @@ import { Search } from "react-feather";
 import { Button } from "./Button";
 import { Input } from "./Input";
 
-const SearchForm = ({ onSubmit, resetSearch, searchTerm, setSearchTerm }) => {
+type InputProps = {
+  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+  resetSearch: () => void;
+  searchTerm: string;
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
+};
+
+const SearchForm = ({
+  onSubmit,
+  resetSearch,
+  searchTerm,
+  setSearchTerm,
+}: InputProps) => {
   const theme: Theme = useTheme();
 
   return (
@@ -36,6 +48,7 @@ const StyledSubmitButton = styled(Button)`
   border-radius: 0 4px 4px 0;
   height: 34px;
   align-self: flex-end;
+  z-index: -1;
 `;
 
 export { SearchForm };

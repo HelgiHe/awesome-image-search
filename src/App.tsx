@@ -5,10 +5,10 @@ import { darkTheme } from "./themes/dark";
 import { lightTheme } from "./themes/light";
 import { SearchForm } from "./components/SearchForm";
 import { Results } from "./components/Results";
-import { fakeData } from "./lib/data";
+import { fakeData } from "./util/data";
 import { Header } from "./components/Header";
 import { GlobalStyle } from "./components/GlobalStyle";
-import { fetchData } from "./lib/api";
+import { fetchData } from "./util/api";
 import { Loader } from "./components/Loader";
 import { ErrorMsg } from "./components/ErrroMsg";
 
@@ -20,13 +20,14 @@ const App = () => {
   const [searchItems, setSearchItems] = React.useState([]);
   const [error, setError] = React.useState("");
 
-  const [ref, inView] = useInView({ rootMargin: "0px 0px 300px 0px" });
+  const [ref, inView] = useInView({ rootMargin: "0px 0px 400px 0px" });
 
   React.useEffect(() => {
-    if (inView && searchItems.length) {
+    if (inView && searchItems.length && !loading) {
       (async function fetchNextResults() {
         setLoading(true);
         const data = await fetchData(startIndex, searchTerm);
+        console.log(data);
         setStartIndex(data.queries.nextPage[0].startIndex);
         const newResults = [...searchItems, ...data.items];
         setSearchItems(newResults);
@@ -34,6 +35,7 @@ const App = () => {
       })();
     }
   }, [inView]);
+
   const changeTheme = () => {
     if (theme === "light") {
       setTheme("dark");
@@ -45,10 +47,9 @@ const App = () => {
   const resetSearch = () => {
     setSearchTerm("");
     setError("");
-    setSearchItems([]);
   };
 
-  const onSearch = async (event) => {
+  const onSearch = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setLoading(true);
     const data = await fetchData(startIndex, searchTerm);

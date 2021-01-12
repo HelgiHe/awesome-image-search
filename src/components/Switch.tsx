@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { Theme, useTheme } from "@emotion/react";
+
 type SwichProps = { isOn: boolean; handleToggle: () => void };
 
 const Switch = ({ isOn, handleToggle }: SwichProps) => {

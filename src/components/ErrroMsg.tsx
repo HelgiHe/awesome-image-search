@@ -3,7 +3,7 @@ import { Theme, useTheme } from "@emotion/react";
 import { AlertCircle } from "react-feather";
 import React from "react";
 
-const ErrorMsg = ({ message }) => {
+const ErrorMsg = ({ message }: { message: string }) => {
   const theme: Theme = useTheme();
   return (
     <ErrorContainer>

@@ -4,7 +4,13 @@ import { Theme, useTheme } from "@emotion/react";
 import { Sun, Moon } from "react-feather";
 import { Switch } from "./Switch";
 
-const Header = ({ title, selectedTheme, handleToggle }) => {
+type HeaderProps = {
+  title: string;
+  selectedTheme: string;
+  handleToggle: () => void;
+};
+
+const Header = ({ title, selectedTheme, handleToggle }: HeaderProps) => {
   const theme: Theme = useTheme();
   return (
     <StyledHeader>
