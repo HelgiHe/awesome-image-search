@@ -9,9 +9,9 @@ const Results = ({ searchResults }: { searchResults: SearchItem[] }) => {
   }
   return (
     <ResultsContainer>
-      {searchResults.map((item) => (
+      {searchResults.map((item, index) => (
         <Card
-          key={item.link}
+          key={`${item.link}${index}`}
           imageUrl={item.link}
           externalLink={item.image.contextLink}
           title={item.title}
