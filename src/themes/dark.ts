@@ -8,6 +8,7 @@ const darkTheme: Theme = {
     secondary: "#66a8ec",
     accent: "#f27f29",
     border: "#3a3d48",
+    error: "#cf6679",
   },
   spacing: {
     single: "12px",

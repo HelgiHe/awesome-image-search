@@ -5,6 +5,7 @@ type InputProps = {
   inputId: string;
   label: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onFocus: () => void;
   placeholder: string;
   value: string;
 };
@@ -13,6 +14,7 @@ const Input = ({
   inputId,
   label,
   onChange,
+  onFocus,
   placeholder,
   value,
 }: InputProps) => {
@@ -24,6 +26,7 @@ const Input = ({
         value={value}
         placeholder={placeholder}
         onChange={onChange}
+        onFocus={onFocus}
       />
     </InputContainer>
   );

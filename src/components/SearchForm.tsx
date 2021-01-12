@@ -5,7 +5,7 @@ import { Search } from "react-feather";
 import { Button } from "./Button";
 import { Input } from "./Input";
 
-const SearchForm = ({ onSubmit, searcTerm, setSearchTerm }) => {
+const SearchForm = ({ onSubmit, resetSearch, searchTerm, setSearchTerm }) => {
   const theme: Theme = useTheme();
 
   return (
@@ -14,8 +14,9 @@ const SearchForm = ({ onSubmit, searcTerm, setSearchTerm }) => {
         inputId="search"
         label="Myndaleit"
         onChange={(event) => setSearchTerm(event.target.value)}
-        value={searcTerm}
-        placeholder="Leitarorð..."
+        value={searchTerm}
+        placeholder=""
+        onFocus={resetSearch}
       />
       <StyledSubmitButton type="submit">
         <Search color={theme.color.text} />

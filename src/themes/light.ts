@@ -8,6 +8,7 @@ const lightTheme: Theme = {
     secondary: "#c2b7da",
     accent: "#4c2a94",
     border: "#e6e7eb",
+    error: "#a62839",
   },
   spacing: {
     single: "12px",

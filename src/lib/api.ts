@@ -12,6 +12,7 @@ export const fetchData = async (start: number, query: string) => {
     ).data;
     return response;
   } catch (error) {
+    console.log(error);
     return error;
   }
 };
