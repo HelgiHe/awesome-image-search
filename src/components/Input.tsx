@@ -7,6 +7,7 @@ type InputProps = {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onFocus: () => void;
   placeholder: string;
+  showLabel: boolean;
   value: string;
 };
 
@@ -16,14 +17,16 @@ const Input = ({
   onChange,
   onFocus,
   placeholder,
+  showLabel,
   value,
 }: InputProps) => {
   return (
     <InputContainer>
-      <label htmlFor={inputId}>{label}</label>
+      {showLabel ? <label htmlFor={inputId}>{label}</label> : null}
       <StyledInput
         id={inputId}
         value={value}
+        aria-label={showLabel ? label : ""}
         placeholder={placeholder}
         onChange={onChange}
         onFocus={onFocus}

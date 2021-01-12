@@ -34,7 +34,7 @@ type SearcImage = {
   thumbnailWidth: number;
 };
 
-type SearcItem = {
+export type SearchItem = {
   kind: string;
   title: string;
   htmlTitle: string;
@@ -47,7 +47,7 @@ type SearcItem = {
   image: SearcImage;
 };
 
-type SearchResponse = {
+export type SearchResponse = {
   kind: string;
   url: {
     type: string;
@@ -67,4 +67,5 @@ type SearchResponse = {
     totalResults: string;
     formattedTotalResults: string;
   };
+  items: SearchItem[];
 };

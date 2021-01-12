@@ -26,6 +26,7 @@ const GlobalStyle = () => {
         h5,
         h6,
         p,
+        input,
         label {
           margin: 0px;
           color: ${theme.color.text};

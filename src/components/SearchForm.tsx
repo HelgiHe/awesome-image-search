@@ -28,6 +28,7 @@ const SearchForm = ({
         onChange={(event) => setSearchTerm(event.target.value)}
         value={searchTerm}
         placeholder=""
+        showLabel={false}
         onFocus={resetSearch}
       />
       <StyledSubmitButton type="submit">
@@ -48,7 +49,6 @@ const StyledSubmitButton = styled(Button)`
   border-radius: 0 4px 4px 0;
   height: 34px;
   align-self: flex-end;
-  z-index: -1;
 `;
 
 export { SearchForm };

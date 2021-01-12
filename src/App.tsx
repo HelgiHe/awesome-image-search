@@ -5,30 +5,29 @@ import { darkTheme } from "./themes/dark";
 import { lightTheme } from "./themes/light";
 import { SearchForm } from "./components/SearchForm";
 import { Results } from "./components/Results";
-import { fakeData } from "./util/data";
 import { Header } from "./components/Header";
 import { GlobalStyle } from "./components/GlobalStyle";
 import { fetchData } from "./util/api";
 import { Loader } from "./components/Loader";
 import { ErrorMsg } from "./components/ErrroMsg";
+import { SearchItem, SearchResponse } from "./util/types";
 
 const App = () => {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [theme, setTheme] = React.useState("light");
   const [startIndex, setStartIndex] = React.useState(1);
   const [loading, setLoading] = React.useState(false);
-  const [searchItems, setSearchItems] = React.useState([]);
+  const [searchItems, setSearchItems] = React.useState<SearchItem[]>([]);
   const [error, setError] = React.useState("");
 
-  const [ref, inView] = useInView({ rootMargin: "0px 0px 400px 0px" });
+  const [ref, inView] = useInView({ rootMargin: "0px 0px 300px 0px" });
 
   React.useEffect(() => {
     if (inView && searchItems.length && !loading) {
       (async function fetchNextResults() {
         setLoading(true);
-        const data = await fetchData(startIndex, searchTerm);
-        console.log(data);
-        setStartIndex(data.queries.nextPage[0].startIndex);
+        const data: SearchResponse = await fetchData(startIndex, searchTerm);
+        setStartIndex(data.queries.nextPage[0]?.startIndex);
         const newResults = [...searchItems, ...data.items];
         setSearchItems(newResults);
         setLoading(false);
@@ -52,15 +51,18 @@ const App = () => {
   const onSearch = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setLoading(true);
-    const data = await fetchData(startIndex, searchTerm);
-    if (data.searchInformation?.totalResults > 0) {
-      setSearchItems(data.items);
-      setStartIndex(data.queries.nextPage[0].startIndex);
-    } else if (Number(data.searchInformation?.totalResults) === 0) {
-      setError("Engar niðurstöður fundust");
-    } else {
-      setError("Eitthvað fór úrskeiðis reyndu aftur eða prófaðu seinna");
+    if (!loading && setSearchTerm) {
+      const data = await fetchData(startIndex, searchTerm);
+      if (data.searchInformation?.totalResults > 0) {
+        setSearchItems(data.items);
+        setStartIndex(data.queries.nextPage[0].startIndex);
+      } else if (Number(data.searchInformation?.totalResults) === 0) {
+        setError("Engar niðurstöður fundust");
+      } else {
+        setError("Eitthvað fór úrskeiðis reyndu aftur eða prófaðu seinna");
+      }
     }
+
     setLoading(false);
   };
 
