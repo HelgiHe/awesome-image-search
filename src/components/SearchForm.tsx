@@ -27,7 +27,7 @@ const SearchForm = ({
         label="Myndaleit"
         onChange={(event) => setSearchTerm(event.target.value)}
         value={searchTerm}
-        placeholder=""
+        placeholder="Leitarorð..."
         showLabel={false}
         onFocus={resetSearch}
       />

@@ -11,10 +11,11 @@ import { fetchData } from "./util/api";
 import { Loader } from "./components/Loader";
 import { ErrorMsg } from "./components/ErrroMsg";
 import { SearchItem, SearchResponse } from "./util/types";
+import { useLocalStorage } from "./hooks/useLocalStorage";
 
 const App = () => {
   const [searchTerm, setSearchTerm] = React.useState("");
-  const [theme, setTheme] = React.useState("light");
+  const [theme, setTheme] = useLocalStorage("theme", "light");
   const [startIndex, setStartIndex] = React.useState(1);
   const [loading, setLoading] = React.useState(false);
   const [searchItems, setSearchItems] = React.useState<SearchItem[]>([]);
@@ -68,7 +69,6 @@ const App = () => {
         setError("Eitthvað fór úrskeiðis reyndu aftur eða prófaðu seinna");
       }
     }
-
     setLoading(false);
   };
 
