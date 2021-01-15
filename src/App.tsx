@@ -27,9 +27,13 @@ const App = () => {
       (async function fetchNextResults() {
         setLoading(true);
         const data: SearchResponse = await fetchData(startIndex, searchTerm);
-        setStartIndex(data.queries.nextPage[0]?.startIndex);
-        const newResults = [...searchItems, ...data.items];
-        setSearchItems(newResults);
+        if (data.queries.nextPage) {
+          setStartIndex(data.queries.nextPage[0].startIndex);
+        }
+        if (Number(data.searchInformation.totalResults) > searchItems.length) {
+          const newResults = [...searchItems, ...data.items];
+          setSearchItems(newResults);
+        }
         setLoading(false);
       })();
     }
@@ -55,7 +59,9 @@ const App = () => {
       const data = await fetchData(startIndex, searchTerm);
       if (data.searchInformation?.totalResults > 0) {
         setSearchItems(data.items);
-        setStartIndex(data.queries.nextPage[0].startIndex);
+        if (data.queries.nextPage) {
+          setStartIndex(data.queries.nextPage[0].startIndex);
+        }
       } else if (Number(data.searchInformation?.totalResults) === 0) {
         setError("Engar niðurstöður fundust");
       } else {
